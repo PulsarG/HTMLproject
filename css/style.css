@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    background: url("../img/backfon.jpg");
+    font-family: Arial;
+    line-height: 1.5;
+    font-size: 18px;
+}
+
+.card {
+    width: 300px;
+    margin: 30px auto;
+    padding: 1px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px #ccc;
+    border-radius: 10px;
+}
+
+.card-photo {
+    display: block;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.card-title {
+    font-size: 30px;
+    text-align: center;
+    color: #ff06b5;
+}
+
+.card-text {
+    font-size: 20px;
+}
+
+.card-subtitle {
+    font-size: 30px;
+    color: red;
+    padding-left: 0%;
+    margin: auto;
+}
