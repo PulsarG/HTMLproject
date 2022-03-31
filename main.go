@@ -1,51 +1,58 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
-	"net/http"
-	"html/template"
+
+	_ "github.com/go-sql-driver/mysql"
+	//"net/http"
 )
 
-type Person struct {
-	Name                  string
-	Age                   uint16
-	Money                 int
-	avg_grades, happiness float64
-	Hobbis []string
-}
-
-func (u Person) getAllInfo() string {
-	return fmt.Sprintf("User name is: %s. He is %d and he has money: %d", u.Name, u.Age, u.Money)
-}
-
-/* func (u *Person) setNewName (newName string) {
-	u.Name = newName
+/* func StartPage(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "html/index.html")
 } */
 
-func index(w http.ResponseWriter, r *http.Request) {
-	Bob := Person{"Bob", 25, -50, 0.6, 0.8, []string{"First", "Second", "Third"} }
-	//Bob.setNewName("Alex")
-	//fmt.Fprintf(w, "index.html")
-
-	tmpl, _ := template.ParseFiles("test.html")
-	tmpl.Execute(w, Bob)
+type User struct {
+	Name string `json:"name"`
+	Age  int    `json:"age"`
 }
 
-/* func secondPage(w http.ResponseWriter, r *http.Request) {
-	Bob := Person{"Bob", 25, -50, 0.6, 0.8}
-	tmpl2, _ := template.ParseFiles("secondpage.html")
-	tmpl2.Execute(w, Bob)
-} */
-
-func handlRequest() {
-	http.HandleFunc("/", index)
-	//http.HandleFunc("/secondpage/", secondPage)
-	http.ListenAndServe(":5500", nil)
-}
-
+// *******************************************************************************************
+// *******************************************************************************************
 // *******************************************************************************************
 
 func main() {
 
-	handlRequest()
+	//http.HandleFunc("/", StartPage)
+	//http.ListenAndServe(":5500", nil)
+
+	db, err := sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/golang")
+	if err != nil {
+		panic(err)
+	}
+
+	defer db.Close()
+
+	/* insert, err := db.Query("INSERT INTO `users` (`name`, `age`) VALUE ('Alex', 32)")
+	if err != nil {
+		panic(err)
+	}
+	defer insert.Close() */
+
+	res, err := db.Query("SELECT `name`, `age` FROM `users`")
+	if err != nil {
+		panic(err)
+	}
+
+	for res.Next() {
+		var user User
+		err = res.Scan(&user.Name, &user.Age)
+		if err != nil {
+			panic(err)
+		}
+
+		fmt.Println(fmt.Sprintf("User: %s with age %d", user.Name, user.Age))
+	}
+
+	fmt.Println("Enter to MySQL")
 }

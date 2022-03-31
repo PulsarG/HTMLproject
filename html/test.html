@@ -13,19 +13,21 @@
     <div class="container">
 
         <h1>Main page test</h1>
-    
+
         {{ if eq .Name "Bob" }}
         <span>Hallo all</span>
         {{ else }}
         <span>Well done</span>
         {{ end }}
-    
+
         <ul>
             {{ range .Hobbis}}
             <li><b>{{ . }}</b></li>
             {{ end }}
         </ul>
-    
+
+        <img src="../img/PULSAR.png/" alt="NO_IMG" class="card">
+
         <p>User: {{ .Name }} </p>
     </div>
 </body>
