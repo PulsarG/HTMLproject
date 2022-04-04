@@ -10,7 +10,7 @@
       <div class="alert alert-danger">
         <h2>{{ .Title }}</h2>
         <p>{{ .Anons }}</p>
-        <a href="/post/ {{ .Id }}" class="btn btn-danger">Читать далее</a>
+        <a href="/post/{{ .Id }}" class="btn btn-danger">Читать далее</a>
       </div>
       {{ else }}
       <p class="lead">Статей нет</p>
@@ -20,13 +20,9 @@
     <div class="container text-center my-5">
       <div class="row">
         <div class="col-lg-6 mx-auto">
-          <img class="rounded-img" src="../img/PulsarLarg.jpg" alt="Hello" />
+          <img class="rounded-img" src="../img/cat.jpg" alt="Hello" />
           <h1 class="fw-light">Котик с цветами</h1>
-          <p class="lead text-muted">Это тестовый сайт. Use our powerful mobile-first flexbox grid to build layouts of
-            all
-            shapes and sizes thanks
-            to a twelve column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined
-            classes.</p>
+          <p class="lead text-muted"><strong>Он приходит к тем, кто способен вывести картинку на страницу. Поздравляю, если ты его видишь.</strong></p>
           <a href="https://vk.com/alexandr_push" target="_blank" class="btn btn-primary">
             Кнопка
           </a>
