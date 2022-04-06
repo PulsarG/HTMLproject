@@ -12,6 +12,9 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+
+var countInGo uint16 = 0
+
 type Article struct {
 	Id                     uint16
 	Title, Anons, FullText string
@@ -124,6 +127,8 @@ func handlFunc() {
 
 	http.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.Dir("./img/"))))
 	http.Handle("/fav/", http.StripPrefix("/fav/", http.FileServer(http.Dir("./fav/"))))
+	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./js/"))))
+	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("./css/"))))
 
 	rtr.HandleFunc("/", Index).Methods("GET")
 	rtr.HandleFunc("/secondpage", SecondPage).Methods("GET")

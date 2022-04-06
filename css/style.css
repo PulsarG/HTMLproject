@@ -1,8 +1,8 @@
-body {
-    background: blue;
+/* body {
+    background: white;
 }
-
-/* .card {
+ */
+/*  .card {
     width: 300px;
     margin: 30px auto;
     padding: 1px;
@@ -28,10 +28,11 @@ body {
 .card-text {
     font-size: 20px;
 }
+ */
 
-.card-subtitle {
+.textOne {
     font-size: 30px;
     color: red;
     padding-left: 0%;
     margin: auto;
-} */
+} 
